@@ -7,6 +7,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IAuthBL, AuthBL>();
 builder.Services.AddSingleton<IAuthDal, AuthDal>();
+builder.Services.AddSingleton<IEncrypt, Encrypt>();
 
 var app = builder.Build();
 
