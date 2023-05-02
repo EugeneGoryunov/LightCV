@@ -2,8 +2,15 @@
 
 public class CurrentUser : ICurrentUser
 {
-    public bool IsLoggedIn()
+    private readonly IHttpContextAccessor httpContextAccessor;
+
+    public CurrentUser(IHttpContextAccessor httpContextAccessor)
     {
-        throw new NotImplementedException();
+        this.httpContextAccessor = httpContextAccessor;
+    }
+    public bool IsLoggedIn()
+    { 
+        int? id = httpContextAccessor.HttpContext?.Session.GetInt32(AuthConstants.AUTH_SESSOIN_PARAM_NAME);
+        return id != null;
     }
 }

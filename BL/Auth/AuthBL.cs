@@ -24,11 +24,12 @@ public class AuthBL : IAuthBL
         user.Salt = Guid.NewGuid().ToString();
         user.Password = encrypt.HashPassword(user.Password, user.Salt);
         int id = await authDal.CreatUser(user);
+        Login(id);
         return id;
     }
 
     public void Login(int id)
     {
-        httpContextAccessor.HttpContext?.Session.SetInt32("userid",id);
+       httpContextAccessor.HttpContext?.Session.SetInt32(AuthConstants.AUTH_SESSOIN_PARAM_NAME, id);
     }
 }
