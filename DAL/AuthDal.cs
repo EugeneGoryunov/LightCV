@@ -17,10 +17,8 @@ public class AuthDal : IAuthDal
             (@"select UserId, Email, Password, Salt, Status
              from AppUser
              where Email = @email", 
-                new { id = email }) ?? new UserModel();    
+                new { email = email }) ?? new UserModel();    
         }
-        
-        throw new NotImplementedException();
     }
 
     public async Task<UserModel> GetUserById(string id)
@@ -33,9 +31,7 @@ public class AuthDal : IAuthDal
                  from AppUser 
                  where UserId = @id", 
                 new { id = id }) ?? new UserModel();    
-        }   
-        
-        throw new NotImplementedException();
+        }
     }
 
     public async Task<int> CreatUser(UserModel model)
@@ -47,7 +43,5 @@ public class AuthDal : IAuthDal
                          values(@Email, @Password, @Salt, @Status)";
             return await  connection.ExecuteAsync(sql, model);
         }
-        
-        throw new NotImplementedException();
     }
 }

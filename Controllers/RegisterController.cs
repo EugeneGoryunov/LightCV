@@ -23,12 +23,23 @@ public class RegisterController : Controller
 
     [HttpPost]
     [Route("/register")]
-    public IActionResult IndexSave(RegisterViewModel model)
+    public async Task<IActionResult> IndexSave(RegisterViewModel model)
     {
         if (ModelState.IsValid)
         {
-            authBl.CreatUser(AuthMapper.MapRegisterViewModelToUserModel(model));
-            return Redirect("/");
+            var errorModel = await authBl.ValidateEmail(model.Email ?? "");
+            
+            if (errorModel != null)
+            {
+                ModelState.TryAddModelError("Email", errorModel.ErrorMessage!);
+            }
+
+            if (ModelState.IsValid)
+            {
+                await authBl.CreatUser(AuthMapper.MapRegisterViewModelToUserModel(model));
+                return Redirect("/");
+            }
+
         }
         
         return View("Index", model);

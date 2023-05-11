@@ -1,4 +1,5 @@
-﻿using CurriculumVitae.DAL.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using CurriculumVitae.DAL.Models;
 using CurriculumVitae.DAL;
 
 namespace CurriculumVitae.BL.Auth;
@@ -31,5 +32,30 @@ public class AuthBL : IAuthBL
     public void Login(int id)
     {
        httpContextAccessor.HttpContext?.Session.SetInt32(AuthConstants.AUTH_SESSOIN_PARAM_NAME, id);
+    }
+
+    public async Task<int> Authenticate(string email, string password, bool rememberMe)
+    {
+        var user = await authDal.GetUserByEmail(email);
+
+        if (user.Password == encrypt.HashPassword(password, user.Salt))
+        {
+            Login(user.UserId ?? 0);
+            return user.UserId ?? 0;
+        }
+
+        return 0;
+    }
+
+    public async Task<ValidationResult> ValidateEmail(string email)
+    {
+        var user = await authDal.GetUserByEmail(email);
+        
+        if (user.UserId != null)
+        {
+            return new ValidationResult("Email уже существует");
+        }
+
+        return null;
     }
 }
