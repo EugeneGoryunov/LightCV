@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Authentication;
 using CurriculumVitae.DAL.Models;
 using CurriculumVitae.DAL;
+using LightCV.BL.Exception;
 
 namespace CurriculumVitae.BL.Auth;
 
@@ -38,13 +40,13 @@ public class AuthBL : IAuthBL
     {
         var user = await authDal.GetUserByEmail(email);
 
-        if (user.Password == encrypt.HashPassword(password, user.Salt))
+        if (user.UserId != null && user.Password == encrypt.HashPassword(password, user.Salt))
         {
             Login(user.UserId ?? 0);
             return user.UserId ?? 0;
         }
 
-        return 0;
+        throw new AuthorizationException();
     }
 
     public async Task<ValidationResult> ValidateEmail(string email)

@@ -40,8 +40,8 @@ public class AuthDal : IAuthDal
         {
             connection.Open();
             string sql = @"insert into AppUser(Email, Password, Salt, Status)
-                         values(@Email, @Password, @Salt, @Status)";
-            return await  connection.ExecuteAsync(sql, model);
+                         values(@Email, @Password, @Salt, @Status) returning UserId";
+            return await  connection.QuerySingleAsync<int>(sql, model);
         }
     }
 }
