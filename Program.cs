@@ -1,5 +1,5 @@
-using CurriculumVitae.BL.Auth;
-using CurriculumVitae.DAL;
+using LightCV.BL.Auth;
+using LightCV.DAL;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

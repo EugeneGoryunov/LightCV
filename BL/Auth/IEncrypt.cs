@@ -1,4 +1,4 @@
-﻿namespace CurriculumVitae.BL.Auth;
+﻿namespace LightCV.BL.Auth;
 
 public interface IEncrypt
 {

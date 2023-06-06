@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Authentication;
-using CurriculumVitae.DAL.Models;
-using CurriculumVitae.DAL;
 using LightCV.BL.Exception;
+using LightCV.DAL;
+using LightCV.DAL.Models;
 
-namespace CurriculumVitae.BL.Auth;
+namespace LightCV.BL.Auth;
 
 public class AuthBL : IAuthBL
 {

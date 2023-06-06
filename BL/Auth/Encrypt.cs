@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace CurriculumVitae.BL.Auth;
+namespace LightCV.BL.Auth;
 
 public class Encrypt : IEncrypt
 {

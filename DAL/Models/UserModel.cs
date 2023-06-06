@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CurriculumVitae.DAL.Models;
+namespace LightCV.DAL.Models;
 
 public class UserModel
 {

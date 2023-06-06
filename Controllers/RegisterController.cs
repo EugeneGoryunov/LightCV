@@ -1,9 +1,9 @@
-﻿using CurriculumVitae.BL.Auth;
-using CurriculumVitae.ViewMappers;
-using CurriculumVitae.ViewModels;
+﻿using LightCV.BL.Auth;
+using LightCV.ViewMappers;
+using LightCV.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CurriculumVitae.Controllers;
+namespace LightCV.Controllers;
 
 public class RegisterController : Controller
 {

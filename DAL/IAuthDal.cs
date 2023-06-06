@@ -1,6 +1,6 @@
-﻿using CurriculumVitae.DAL.Models;
+﻿using LightCV.DAL.Models;
 
-namespace CurriculumVitae.DAL;
+namespace LightCV.DAL;
 
 public interface IAuthDal
 {

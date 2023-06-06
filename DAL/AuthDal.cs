@@ -1,9 +1,9 @@
-﻿using CurriculumVitae.DAL.Helpers;
-using CurriculumVitae.DAL.Models;
-using Dapper;
+﻿using Dapper;
+using LightCV.DAL.Helpers;
+using LightCV.DAL.Models;
 using Npgsql;
 
-namespace CurriculumVitae.DAL;
+namespace LightCV.DAL;
 
 public class AuthDal : IAuthDal
 {

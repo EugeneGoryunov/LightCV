@@ -1,8 +1,8 @@
-﻿using CurriculumVitae.BL.Auth;
-using CurriculumVitae.ViewModels;
+﻿using LightCV.BL.Auth;
+using LightCV.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CurriculumVitae.Controllers;
+namespace LightCV.Controllers;
 
 public class LoginController : Controller
 {

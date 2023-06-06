@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CurriculumVitae.ViewModels;
+namespace LightCV.ViewModels;
 
 public class RegisterViewModel: IValidatableObject
 {

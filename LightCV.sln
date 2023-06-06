@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCV", "LightCV.csproj", "{BA51D825-9A8B-4BC4-8870-F6F432090B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCVTest", "..\LightCVTest\LightCVTest.csproj", "{65EC8B49-E3C2-4A96-805F-E4EE0C771F46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCVTest", "..\LightCVTest\LightCVTest.csproj", "{A496E2EA-6F96-47D4-B4B8-AC796BB62265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{BA51D825-9A8B-4BC4-8870-F6F432090B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA51D825-9A8B-4BC4-8870-F6F432090B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA51D825-9A8B-4BC4-8870-F6F432090B15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65EC8B49-E3C2-4A96-805F-E4EE0C771F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65EC8B49-E3C2-4A96-805F-E4EE0C771F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65EC8B49-E3C2-4A96-805F-E4EE0C771F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65EC8B49-E3C2-4A96-805F-E4EE0C771F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A496E2EA-6F96-47D4-B4B8-AC796BB62265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A496E2EA-6F96-47D4-B4B8-AC796BB62265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A496E2EA-6F96-47D4-B4B8-AC796BB62265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A496E2EA-6F96-47D4-B4B8-AC796BB62265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

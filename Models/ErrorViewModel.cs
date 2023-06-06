@@ -1,4 +1,4 @@
-namespace CurriculumVitae.Models
+namespace LightCV.Models
 {
     public class ErrorViewModel
     {

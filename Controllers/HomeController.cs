@@ -1,9 +1,9 @@
-﻿using CurriculumVitae.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using CurriculumVitae.BL.Auth;
+using LightCV.BL.Auth;
+using LightCV.Models;
 
-namespace CurriculumVitae.Controllers
+namespace LightCV.Controllers
 {
     public class HomeController : Controller
     {

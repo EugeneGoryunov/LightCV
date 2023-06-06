@@ -1,7 +1,7 @@
-﻿using CurriculumVitae.DAL.Models;
-using CurriculumVitae.ViewModels;
+﻿using LightCV.DAL.Models;
+using LightCV.ViewModels;
 
-namespace CurriculumVitae.ViewMappers;
+namespace LightCV.ViewMappers;
 
 public class AuthMapper
 {

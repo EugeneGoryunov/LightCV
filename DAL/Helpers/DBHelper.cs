@@ -1,4 +1,4 @@
-﻿namespace CurriculumVitae.DAL.Helpers;
+﻿namespace LightCV.DAL.Helpers;
 
 public class DBHelper
 {
