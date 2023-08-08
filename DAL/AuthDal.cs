@@ -21,7 +21,7 @@ public class AuthDal : IAuthDal
         }
     }
 
-    public async Task<UserModel> GetUserById(string id)
+    public async Task<UserModel> GetUserById(int id)
     {
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {

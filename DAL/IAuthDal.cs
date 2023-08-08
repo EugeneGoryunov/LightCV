@@ -5,6 +5,6 @@ namespace LightCV.DAL;
 public interface IAuthDal
 {
     Task<UserModel> GetUserByEmail(string email);
-    Task<UserModel> GetUserById(string id);
+    Task<UserModel> GetUserById(int id);
     Task<int> CreatUser(UserModel model);
 }

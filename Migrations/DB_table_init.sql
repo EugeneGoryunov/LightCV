@@ -32,3 +32,11 @@ create table if not exists Profile
     LastNmew varchar(50),
     ProfileImage varchar(100)
 )
+
+create table if not exists DbSession (
+    DBSessionId uuid primary key,
+    SessionData text,
+    Created timestamp,
+    LastAccessed timestamp,
+    UserId int
+)
