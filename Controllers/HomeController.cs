@@ -17,9 +17,10 @@ namespace LightCV.Controllers
             this.currentUser = currentUser;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(currentUser.IsLoggedIn());
+            var isLoggedIn = await currentUser.IsLoggedIn();
+            return View(isLoggedIn);
         }
 
         public IActionResult Privacy()
