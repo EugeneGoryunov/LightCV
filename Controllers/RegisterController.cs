@@ -1,4 +1,5 @@
 ﻿using LightCV.BL.Auth;
+using LightCV.BL.Exception;
 using LightCV.ViewMappers;
 using LightCV.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -27,21 +28,18 @@ public class RegisterController : Controller
     {
         if (ModelState.IsValid)
         {
-            var errorModel = await authBl.ValidateEmail(model.Email ?? "");
-            
-            if (errorModel != null)
+            try
             {
-                ModelState.TryAddModelError("Email", errorModel.ErrorMessage!);
-            }
-
-            if (ModelState.IsValid)
-            {
-                await authBl.CreatUser(AuthMapper.MapRegisterViewModelToUserModel(model));
+                await authBl.Register(AuthMapper.MapRegisterViewModelToUserModel(model));
                 return Redirect("/");
             }
+            catch (DuplicateEmailException e)
+            {
+                ModelState.TryAddModelError("Email", "Email уже существует");
+            }
+
 
         }
-        
         return View("Index", model);
     }
 }
