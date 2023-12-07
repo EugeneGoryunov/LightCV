@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Authentication;
 using LightCV.BL.Exception;
+using LightCV.BL.General;
 using LightCV.DAL;
 using LightCV.DAL.Models;
 
@@ -33,6 +34,27 @@ public class AuthBL : IAuthBL
         await Login(id);
         return id;
     }
+    
+    public async Task ValidateEmail(string email)
+    {
+        var user = await authDal.GetUserByEmail(email);
+
+        if (user.UserId != null)
+        {
+            throw new DuplicateEmailException();
+        }
+    }
+
+    public async Task Register(UserModel user)
+    {
+        using (var scope = Helpers.CreatTransactionScope())
+        {
+            await dbSession.Lock();
+            await ValidateEmail(user.Email);
+            await CreatUser(user);
+            scope.Complete();
+        }
+    }
 
     public async Task Login(int id)
     {
@@ -50,17 +72,5 @@ public class AuthBL : IAuthBL
         }
 
         throw new AuthorizationException();
-    }
-
-    public async Task<ValidationResult> ValidateEmail(string email)
-    {
-        var user = await authDal.GetUserByEmail(email);
-        
-        if (user.UserId != null)
-        {
-            return new ValidationResult("Email уже существует");
-        }
-
-        return null;
     }
 }

@@ -32,7 +32,7 @@ namespace LightCV.BL.Auth;
                 Created = DateTime.Now,
                 LastAccessed = DateTime.Now
             };
-            await sessionDAL.CreateSession(data);
+            await sessionDAL.Create(data);
             return data;
         }
 
@@ -49,7 +49,7 @@ namespace LightCV.BL.Auth;
             else
                 sessionId = Guid.NewGuid();
 
-            var data = await this.sessionDAL.GetSession(sessionId);
+            var data = await this.sessionDAL.Get(sessionId);
             if (data == null)
             {
                 data = await this.CreateSession();
@@ -65,7 +65,7 @@ namespace LightCV.BL.Auth;
             data.UserId = userId;
             data.DbSessionId = Guid.NewGuid();
             CreateSessionCookie(data.DbSessionId);
-            return await sessionDAL.CreateSession(data);
+            return await sessionDAL.Create(data);
         }
 
         public async Task<int?> GetUserId()
@@ -78,5 +78,11 @@ namespace LightCV.BL.Auth;
         {
             var data = await this.GetSession();
             return data.UserId != null;
+        }
+        
+        public async Task Lock()
+        {
+            var data = await this.GetSession();
+            await sessionDAL.Lock(data.DbSessionId);
         }
     }

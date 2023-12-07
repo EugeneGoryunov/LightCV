@@ -8,7 +8,7 @@ namespace LightCV.DAL;
 
 public class DbSessionDAL : IDbSessionDAL
 {
-    public async Task<int> CreateSession(SessionModel model)
+    public async Task<int> Create(SessionModel model)
     {
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
@@ -17,7 +17,7 @@ public class DbSessionDAL : IDbSessionDAL
         }
     }
 
-    public async Task<SessionModel?> GetSession(Guid sessionId)
+    public async Task<SessionModel?> Get(Guid sessionId)
     {
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
@@ -27,8 +27,21 @@ public class DbSessionDAL : IDbSessionDAL
             return sessions.FirstOrDefault();
         }
     }
+    
+    public async Task Lock(Guid sessionId)
+    {
+        using (var connection = new NpgsqlConnection(DBHelper.connectionString))
+        {
+            await connection.OpenAsync();
+            string sql =
+                @"select DbSessionID from DbSession where DbSessionID = @sessionId for update";
 
-    public async Task<int> UpdateSession(SessionModel model)
+            await connection.QueryAsync<SessionModel>(sql, new {sessionId = sessionId});
+
+        }
+    }
+
+    public async Task<int> Update(SessionModel model)
     {
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
