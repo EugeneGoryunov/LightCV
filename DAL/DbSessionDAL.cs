@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LightCV.DAL.Helpers;
 using LightCV.DAL.Models;
+using LightCV.DAL.Queries;
 using Npgsql;
 
 namespace LightCV.DAL;
@@ -12,10 +13,7 @@ public class DbSessionDAL : IDbSessionDAL
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
             await connection.OpenAsync();
-            string sql = @"insert into DbSession (DbSessionID, SessionData, Created, LastAccessed, UserId)
-                      values (@DbSessionID, @SessionContent, @Created, @LastAccessed, @UserId)";
-
-            return await connection.ExecuteAsync(sql, model);
+            return await connection.ExecuteAsync(QueriesContent.CreateSession, model);
         }
     }
 
@@ -24,10 +22,8 @@ public class DbSessionDAL : IDbSessionDAL
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
             await connection.OpenAsync();
-            string sql =
-                @"select DbSessionID, SessionData, Created, LastAccessed, UserId from DbSession where DbSessionID = @sessionId";
-
-            var sessions = await connection.QueryAsync<SessionModel>(sql, new {sessionId = sessionId});
+            var sessions = 
+                await connection.QueryAsync<SessionModel>(QueriesContent.GetSession, new {sessionId = sessionId});
             return sessions.FirstOrDefault();
         }
     }
@@ -37,12 +33,7 @@ public class DbSessionDAL : IDbSessionDAL
         using (var connection = new NpgsqlConnection(DBHelper.connectionString))
         {
             await connection.OpenAsync();
-            string sql = @"update DbSession
-                      set SessionData = @SessionData, LastAccessed = @LastAccessed, UserId = @UserId
-                      where DbSessionID = @DbSessionID
-                ";
-
-            return await connection.ExecuteAsync(sql, model);
+            return await connection.ExecuteAsync(QueriesContent.UpdateSession, model);
         }
     }
 }

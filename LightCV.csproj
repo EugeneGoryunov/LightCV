@@ -12,4 +12,19 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="DAL\Queries\QueriesContent.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueriesContent.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="DAL\Queries\QueriesContent.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>QueriesContent.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

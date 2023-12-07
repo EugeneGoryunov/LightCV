@@ -1,0 +1,1 @@
+﻿select DbSessionID, SessionData, Created, LastAccessed, UserId from DbSession where DbSessionID = @sessionId;
